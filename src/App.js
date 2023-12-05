@@ -7,7 +7,7 @@ import Connections from './pages/Connections/Connections';
 import ProjectWall from './components/ProjectWall/ProjectWall';
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import Footer from './components/Footer/Footer'
-// import Navbar from './components/Navbar/NavBar.js';
+import Navbar from './components/Navbar/NavBar.js';
 // import Login from './components/Login';
 import { dummyProjects } from './components/dummyData'; // Import dummy data
 
@@ -57,6 +57,7 @@ function App() {
 
   return (
       <Router>
+        <Navbar/>
         <Routes>
         {/* {authenticatedUser && <Navbar onLogout={handleLogout} />} */}
         <Route path="/login">
