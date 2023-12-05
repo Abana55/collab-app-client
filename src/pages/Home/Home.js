@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ProjectWall from '../../components/ProjectWall/ProjectWall';
+import './home.scss';
 import NewProjectForm from '../../components/NewProjectForm/NewProjectForm';
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className='home'>
       <NewProjectForm onAddProject={handleAddProject} /> 
       <ProjectWall projects={projects} />
     </div>
