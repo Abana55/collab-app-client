@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectWall from '../../components/ProjectWall/ProjectWall';
-import './home.scss';
 import NewProjectForm from '../../components/NewProjectForm/NewProjectForm';
+import { fetchProjects, addProject } from '../../services/projectService';
+import './home.scss';
 
 const Home = () => {
-  const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState([]);
 
-  const handleAddProject = (newProject) => {
-    // You can add validation or send a request to your backend to save the new project
-    setProjects((prevProjects) => [...prevProjects, newProject]);
-  };
+    useEffect(() => {
+        const loadProjects = async () => {
+            try {
+                const fetchedProjects = await fetchProjects();
+                setProjects(fetchedProjects);
+            } catch (error) {
+                console.error('Failed to fetch projects', error);
+            }
+        };
 
-  return (
-    <div className='home'>
-      <NewProjectForm onAddProject={handleAddProject} /> 
-      <ProjectWall projects={projects} />
-    </div>
-  );
+        loadProjects();
+    }, []);
+
+    const handleAddProject = async (newProject) => {
+        try {
+            const savedProject = await addProject(newProject);
+            setProjects((prevProjects) => [...prevProjects, savedProject]);
+        } catch (error) {
+            console.error('Failed to add project', error);
+        }
+    };
+
+    return (
+        <div className='home'>
+            <NewProjectForm onAddProject={handleAddProject} />
+            <ProjectWall projects={projects} />
+        </div>
+    );
 };
 
 export default Home;
