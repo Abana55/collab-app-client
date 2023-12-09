@@ -1,0 +1,26 @@
+* {
+    background-color: #e2e0d4;
+    font-family: 'Academy', sans-serif;
+
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../../assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype'),
+        url('../../assets/fonts/alternative-files/AvenirNextLTPro.ttf') format('truetype')
+    font-weight 400;
+  }
+  
+  @font-face {
+    font-family: 'Avenir';
+    src: url('../../assets/fonts/AvenirNextLTPro-Demi.otf') format('opentype'),
+        url('../../assets/fonts/alternative-files/AvenirNextLTProDemi.ttf') format('truetype')
+    font-weight 600;
+  }
+  
+  @font-face {
+    font-family: 'Avenir';
+    src: url('../../assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype'),
+         url('../../assets/fonts/alternative-files/AvenirNextLTProBold.ttf') format('truetype');
+    font-weight: 700;
+  }
