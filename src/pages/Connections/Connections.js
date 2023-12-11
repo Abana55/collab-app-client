@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserConnections } from '../../services/connectionService'; // Adjust the import path
+import './Connections.scss';
 
 function Connections() {
     const [connections, setConnections] = useState([]);
@@ -20,6 +21,11 @@ function Connections() {
 
         loadConnections();
     }, []);
+    const handleViewProfile = (connectionId) => {
+        // Navigate to the profile details page or open a modal
+        console.log("Viewing profile of connection with ID:", connectionId);
+        // For example: navigate(`/profile/${connectionId}`);
+    };
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -27,14 +33,17 @@ function Connections() {
     return (
         <>
             <h1>Person's List of Connections</h1>
-            <div className="connections-list">
+            <ul>
                 {connections.map((connection) => (
-                    <div key={connection.id} className="connection-item">
-                        <span className="connection-name">{connection.name}</span>
-                        {/* Add more details or interaction buttons here */}
-                    </div>
+                    <li key={connection.id}>
+                        <span onClick={() => handleViewProfile(connection.id)} className="connection-name">
+                            {connection.name}
+                        </span>
+                        <button onClick={() => handleViewProfile(connection.id)}>View Profile</button>
+                        {/* Add other interaction buttons here */}
+                    </li>
                 ))}
-            </div>
+            </ul>
         </>
     );
 }
