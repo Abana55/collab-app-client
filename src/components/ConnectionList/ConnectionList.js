@@ -1,5 +1,7 @@
 // src/components/ConnectionList/ConnectionList.js
 import React from 'react';
+import './connectionList.scss';
+
 
 function ConnectionList({ connections }) {
     return (
