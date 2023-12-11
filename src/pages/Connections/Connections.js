@@ -27,11 +27,14 @@ function Connections() {
     return (
         <>
             <h1>Person's List of Connections</h1>
-            <ul>
+            <div className="connections-list">
                 {connections.map((connection) => (
-                    <li key={connection.id}>{connection.name}</li> // Adjust according to your data structure
+                    <div key={connection.id} className="connection-item">
+                        <span className="connection-name">{connection.name}</span>
+                        {/* Add more details or interaction buttons here */}
+                    </div>
                 ))}
-            </ul>
+            </div>
         </>
     );
 }
