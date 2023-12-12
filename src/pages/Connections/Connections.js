@@ -6,6 +6,7 @@ function Connections() {
     const [connections, setConnections] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedConnection, setSelectedConnection] = useState(null);
 
     useEffect(() => {
         const loadConnections = async () => {
@@ -21,10 +22,14 @@ function Connections() {
 
         loadConnections();
     }, []);
-    const handleViewProfile = (connectionId) => {
-        // Navigate to the profile details page or open a modal
-        console.log("Viewing profile of connection with ID:", connectionId);
-        // For example: navigate(`/profile/${connectionId}`);
+
+    
+    const handleViewProfile = (connection) => {
+        setSelectedConnection(connection);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedConnection(null);
     };
 
     if (isLoading) return <div>Loading...</div>;
@@ -44,6 +49,7 @@ function Connections() {
                     </li>
                 ))}
             </ul>
+            <ProfileModal connection={selectedConnection} onClose={handleCloseModal} />
         </>
     );
 }
