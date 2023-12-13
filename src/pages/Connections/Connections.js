@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserConnections } from '../../services/connectionService'; // Adjust the import path
 import './Connections.scss';
+import ProfileModal from '../../components/ProfileModal/ProfileModal';
 
 function Connections() {
     const [connections, setConnections] = useState([]);
