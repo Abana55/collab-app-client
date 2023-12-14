@@ -14,7 +14,7 @@ const EditArtworkForm = ({ artwork, onSubmitSuccess }) => {
             // Append file if a new image is uploaded
             // ...
 
-            await axios.put(`http://localhost:3000/api/artworks/${artwork.id}`, formData);
+            await axios.put(`http://localhost:8000/api/artworks/${artwork.id}`, formData);
             onSubmitSuccess();
         } catch (error) {
             console.error('Error updating artwork:', error);
@@ -29,3 +29,5 @@ const EditArtworkForm = ({ artwork, onSubmitSuccess }) => {
         </form>
     );
 };
+
+export default EditArtworkForm;
