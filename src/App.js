@@ -8,7 +8,7 @@ import ProjectWall from './components/ProjectWall/ProjectWall';
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/NavBar.js';
-import Login from './pages/Login/Login'; // Assuming you have a Login page component
+import Login from './pages/LoginPage/LoginPage'; // Assuming you have a Login page component
 import { dummyProjects } from './components/dummyData';
 
 function App() {

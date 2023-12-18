@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // for redirection after login
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // for making HTTP requests
 
 const LoginPage = () => {
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -17,7 +17,7 @@ const LoginPage = () => {
             // Replace with the correct URL of your backend
             const response = await axios.post('http://localhost:8000/api/auth/login', credentials);
             localStorage.setItem('token', response.data.token); // Save the token to localStorage
-            history.push('/dashboard'); // Redirect to dashboard or other page
+            navigate.push('/dashboard'); // Redirect to dashboard or other page
         } catch (err) {
             setError(err.response?.data.message || 'An error occurred');
         }
