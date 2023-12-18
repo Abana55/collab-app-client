@@ -8,6 +8,7 @@ import ProjectWall from './components/ProjectWall/ProjectWall';
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/NavBar.js';
+import SignupPage from './pages/SignupPage/SignupPage';
 import Login from './pages/LoginPage/LoginPage'; // Assuming you have a Login page component
 import { dummyProjects } from './components/dummyData';
 
@@ -63,6 +64,7 @@ function App() {
     <Router>
       <Navbar onLogout={() => setAuthenticatedUser(null)} isAuthenticated={authenticatedUser !== null} />
       <Routes>
+        <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<Login onLogin={setAuthenticatedUser} />} />
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={
