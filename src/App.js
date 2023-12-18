@@ -1,18 +1,18 @@
 // App.js
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import Connections from './pages/Connections/Connections';
 import ProjectWall from './components/ProjectWall/ProjectWall';
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/NavBar.js';
-// import Login from './components/Login';
-import { dummyProjects } from './components/dummyData'; // Import dummy data
+import Login from './pages/Login/Login'; // Assuming you have a Login page component
+import { dummyProjects } from './components/dummyData';
 
 function App() {
-  const [authenticatedUser, setAuthenticatedUser] = useState('demo'); // Simulated authentication
+  const [authenticatedUser, setAuthenticatedUser] = useState(null);
   const [projects, setProjects] = useState(dummyProjects);
 
   const handleLogin = (username) => {
@@ -54,40 +54,32 @@ function App() {
   //     }
   //   />
   // );
+  // Private Route Component
+  const PrivateRoute = ({ children }) => {
+    return authenticatedUser ? children : <Navigate to="/login" />;
+  };
 
   return (
-      <Router>
-        <Navbar/>
-        <Routes>
-        {/* {authenticatedUser && <Navbar onLogout={handleLogout} />} */}
-        <Route path="/login">
-          {/* {authenticatedUser ? <Redirect to="/" /> : <Login onLogin={handleLogin} />} */}
-        </Route>
+    <Router>
+      <Navbar onLogout={() => setAuthenticatedUser(null)} isAuthenticated={authenticatedUser !== null} />
+      <Routes>
+        <Route path="/login" element={<Login onLogin={setAuthenticatedUser} />} />
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/connections" component={Connections} />
-        <Route
-          path="/projects"
-          exact
-          // component={() => <ProjectWall projects={projects} onAddProject={handleAddProject} />}
-        />
-        <Route
-          path="/projects/:id"
-          component={(props) => (
-            <ProjectDetails
-              {...props}
-              // project={projects.find(
-              //   (project) => project.id === parseInt(props.match.params.id)
-              // )}
-              onEditProject={handleEditProject}
-              onDeleteProject={handleDeleteProject}
-            />
-          )}
-        />
-        </Routes>
-        <Footer/>
+        <Route path="/profile" element={
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        } />
+        <Route path="/connections" element={
+          <PrivateRoute>
+            <Connections />
+          </PrivateRoute>
+        } />
+        {/* ... other routes ... */}
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+      </Routes>
+      <Footer />
     </Router>
-    
   );
 }
 
