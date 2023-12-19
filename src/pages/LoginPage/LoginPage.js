@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // for making HTTP requests
+import './LoginPage.scss';
 
 const LoginPage = () => {
     const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -25,6 +26,7 @@ const LoginPage = () => {
 
     return (
         <div className="login-page">
+            <div className='login-page__box'>
             <h2 className="login-page__title">Login</h2>
             {error && <p className="login-page__error" style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit} className="login-page__form">
@@ -52,6 +54,7 @@ const LoginPage = () => {
                 </div>
                 <button type="submit" className="login-page__button">Login</button>
             </form>
+            </div>
         </div>
     );
 };
