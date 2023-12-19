@@ -24,31 +24,33 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email:</label>
+        <div className="login-page">
+            <h2 className="login-page__title">Login</h2>
+            {error && <p className="login-page__error" style={{ color: 'red' }}>{error}</p>}
+            <form onSubmit={handleSubmit} className="login-page__form">
+                <div className="login-page__form-group">
+                    <label className="login-page__label">Email:</label>
                     <input
                         type="email"
                         name="email"
                         value={credentials.email}
                         onChange={handleChange}
                         required
+                        className="login-page__input"
                     />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div className="login-page__form-group">
+                    <label className="login-page__label">Password:</label>
                     <input
                         type="password"
                         name="password"
                         value={credentials.password}
                         onChange={handleChange}
                         required
+                        className="login-page__input"
                     />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="login-page__button">Login</button>
             </form>
         </div>
     );

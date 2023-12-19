@@ -57,7 +57,7 @@ function App() {
   // );
   // Private Route Component
   const PrivateRoute = ({ children }) => {
-    return authenticatedUser ? children : <Navigate to="/login" />;
+    return authenticatedUser ? children : <Navigate to="/signup" />;
   };
 
   return (
@@ -77,7 +77,6 @@ function App() {
             <Connections />
           </PrivateRoute>
         } />
-        {/* ... other routes ... */}
         <Route path="/projects/:id" element={<ProjectDetails />} />
       </Routes>
       <Footer />
