@@ -1,0 +1,54 @@
+.signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Full viewport height
+    background-color: #f0f0f0; // Light background for the overall page
+
+    &__box {
+        background-color: rgba(255, 255, 255, 0.7); // Semi-transparent white
+        border-radius: 15px; // Rounded borders
+        padding: 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Soft shadow
+        backdrop-filter: blur(10px); // Glassmorphism effect
+        border: 1px solid rgba(255, 255, 255, 0.3); // Slight border for glass effect
+        width: 300px; // Fixed width or you can use max-width for responsiveness
+    }
+
+    &__title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__error {
+        color: red;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    &__button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}

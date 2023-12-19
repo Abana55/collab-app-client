@@ -27,13 +27,15 @@ const SignupPage = () => {
     };
 
     return (
-        <div>
-            <h2>Sign Up</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
+        <div className="signup-page">
+            <div className='signup-page__box'>
+            <h2 className="signup-page__title">Sign Up</h2>
+            {error && <p className="signup-page__error" style={{ color: 'red' }}>{error}</p>}
+            <form onSubmit={handleSubmit} className="signup-page__form">
                 <input
                     type="text"
                     name="username"
+                    className="signup-page__input"
                     value={formData.username}
                     onChange={handleChange}
                     placeholder="Username"
@@ -42,6 +44,7 @@ const SignupPage = () => {
                 <input
                     type="email"
                     name="email"
+                    className="signup-page__input"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Email"
@@ -50,13 +53,15 @@ const SignupPage = () => {
                 <input
                     type="password"
                     name="password"
+                    className="signup-page__input"
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Password"
                     required
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="signup-page__button">Sign Up</button>
             </form>
+            </div>
         </div>
     );
 };
