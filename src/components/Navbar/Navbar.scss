@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Academy+Engraved+LET&display=swap'); // Import the font
+
+.navbar {
+  background-color: #f8f8f8; // Light background color
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  font-family: 'Academy Engraved LET', cursive; // Set the font
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 2rem;
+  }
+
+  &__item {
+    margin: 0 25px; // Increased spacing between links
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+    transition: color 0.3s, transform 0.3s; // Transition for color and transform
+
+    &:hover {
+      color: #007bff; // Change color on hover
+      transform: scale(1.1); // Scale up the link slightly on hover
+    }
+  }
+}
