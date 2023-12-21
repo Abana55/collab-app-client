@@ -26,6 +26,12 @@ const Navbar = () => {
             Project Wall
           </Link>
         </li>
+        {/* New Link for Login Page */}
+        <li className="navbar__item">
+          <Link to="/login" className="navbar__link">
+            Login
+          </Link>
+        </li>
       </ul>
     </nav>
   );
