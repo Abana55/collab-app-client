@@ -7,7 +7,7 @@ const ArtworkDetails = ({ match }) => {
     useEffect(() => {
         const fetchArtwork = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/artworks/${match.params.id}`);
+                const response = await axios.get(`http://localhost:8000/api/artworks/${match.params.id}`);
                 setArtwork(response.data);
             } catch (error) {
                 console.error('Error fetching artwork:', error);

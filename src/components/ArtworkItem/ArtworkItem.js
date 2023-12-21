@@ -5,7 +5,7 @@ const ArtworkItem = ({ artwork, onDeleteSuccess }) => {
     const deleteArtwork = async () => {
         if (window.confirm('Are you sure you want to delete this artwork?')) {
             try {
-                await axios.delete(`http://localhost:3000/api/artworks/${artwork.id}`);
+                await axios.delete(`http://localhost:8000/api/artworks/${artwork.id}`);
                 onDeleteSuccess(artwork.id);
             } catch (error) {
                 console.error('Error deleting artwork:', error);

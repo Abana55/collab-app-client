@@ -10,7 +10,7 @@ const ArtworkGallery = () => {
     useEffect(() => {
         const fetchArtworks = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/artworks');
+                const response = await axios.get('http://localhost:8000/api/artworks');
                 setArtworks(response.data);
             } catch (error) {
                 console.error('Error fetching artworks:', error);
