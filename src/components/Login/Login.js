@@ -11,14 +11,25 @@ const Login = ({ onLogin }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add authentication logic here (e.g., check against a hardcoded username and password)
-    const isAuthenticated = credentials.username === 'demo' && credentials.password === 'password';
-
-    if (isAuthenticated) {
-      onLogin(credentials.username);
-    } else {
+  
+    try {
+      const response = await fetch('http://localhost:8000/api/auth/login', { // Adjust the URL as necessary
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+  
+      const data = await response.json();
+      onLogin(data.token, credentials.username); // Assuming the token is returned in data.token
+    } catch (error) {
       alert('Invalid credentials. Please try again.');
     }
   };
