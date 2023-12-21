@@ -20,7 +20,7 @@ const SignupPage = () => {
         e.preventDefault();
         try {
             await axios.post('http://localhost:8000/api/auth/register', formData);
-            navigate('/login'); // Navigate to login page after successful signup
+            navigate('/profile'); // Navigate to login page after successful signup
         } catch (err) {
             setError(err.response?.data.message || 'An error occurred during signup');
         }

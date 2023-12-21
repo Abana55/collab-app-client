@@ -17,10 +17,12 @@ function App() {
   const [projects, setProjects] = useState(dummyProjects);
 
   const handleLogin = (username) => {
+    localStorage.setItem('user', username);
     setAuthenticatedUser(username);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('user');
     setAuthenticatedUser(null);
   };
 
