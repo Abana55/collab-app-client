@@ -18,9 +18,16 @@ const SignupPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Example validation: Check if passwords match
+        if (formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
         try {
             await axios.post('http://localhost:8000/api/auth/register', formData);
-            navigate('/profile'); // Navigate to login page after successful signup
+            navigate('/profile'); // Navigate to profile page after successful signup
         } catch (err) {
             setError(err.response?.data.message || 'An error occurred during signup');
         }
@@ -57,6 +64,15 @@ const SignupPage = () => {
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Password"
+                    required
+                />
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    className="signup-page__input"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="Confirm Password"
                     required
                 />
                 <button type="submit" className="signup-page__button">Sign Up</button>
