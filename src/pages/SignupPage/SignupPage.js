@@ -7,7 +7,7 @@ const SignupPage = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
     });
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ const SignupPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Example validation: Check if passwords match
+        //validation: Check if passwords match
         if (formData.password !== formData.confirmPassword) {
             setError("Passwords do not match");
             return;
