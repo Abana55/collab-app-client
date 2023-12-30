@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchUserProfile } from '../../services/userService'; // Adjust the import path
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm';
 import { updateUserProfile } from '../../services/userService';
-
+import './Profile.scss';
 
 function Profile() {
     const [user, setUser] = useState(null);
@@ -49,9 +49,10 @@ function Profile() {
 
 
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
-    if (!user) return <div>No user data</div>;
+    if (isLoading) return <div className="profile__loading">Loading...</div>;
+    if (error) return <div className="profile__error">Error: {error}</div>;
+    if (!user) return <div className="profile__error">No user data</div>;
+    
 
     return (
         <>
