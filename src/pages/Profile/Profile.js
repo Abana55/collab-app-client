@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchUserProfile } from '../../services/userService'; // Adjust the import path
+import { fetchUserProfile } from '../../services/userService'; 
 import EditProfileForm from '../../components/EditProfileForm/EditProfileForm';
 import { updateUserProfile } from '../../services/userService';
 import './Profile.scss';
@@ -14,7 +14,7 @@ function Profile() {
     useEffect(() => {
         const loadUserProfile = async () => {
             try {
-                const userData = await fetchUserProfile(); // Implement this function in your service
+                const userData = await fetchUserProfile(); 
                 setUser(userData);
             } catch (err) {
                 setError(err.message || 'Failed to load profile');
@@ -60,14 +60,11 @@ function Profile() {
             <div className="profile-details">
                 <p><strong>Email:</strong> {user.email}</p>
                 <p><strong>Bio:</strong> {user.bio}</p>
-                {/* You can add more details similarly */}
                 <p><strong>Location:</strong> {user.location}</p>
                 <p><strong>Joined:</strong> {new Date(user.joinedDate).toLocaleDateString()}</p>
-                {/* If there's a profile picture */}
                 {user.profilePicture && <img src={user.profilePicture} alt={`${user.name}'s profile`} />}
             </div>
 
-            {/* User-specific actions, like edit profile button */}
             <button onClick={handleEditProfile}>Edit Profile</button>
         </>
     );
